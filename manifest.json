@@ -68,7 +68,7 @@
       "url": "./",
       "icons": [
         {
-          "src": "images/icon-192x192.png",
+          "src": "android/android-launchericon-192-192.png",
           "sizes": "192x192"
         }
       ]

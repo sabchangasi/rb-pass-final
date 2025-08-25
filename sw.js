@@ -11,7 +11,7 @@ const urlsToCache = [
   'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.4/heic2any.min.js',
   'https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Noto+Sans+Gujarati:wght@400;600;700&display=swap',
-  // Add your icon files here
+  // App Icons
   './android/android-launchericon-512-512.png',
   './android/android-launchericon-192-192.png',
   './android/android-launchericon-144-144.png',
@@ -43,7 +43,17 @@ const urlsToCache = [
   './ios/192.png',
   './ios/256.png',
   './ios/512.png',
-  './ios/1024.png'
+  './ios/1024.png',
+  // Screenshots & Splash Screens
+  './images/screenshot-mobile.png',
+  './images/screenshot-wide.png',
+  './images/splash-2048x2732.png',
+  './images/splash-1668x2224.png',
+  './images/splash-1536x2048.png',
+  './images/splash-1125x2436.png',
+  './images/splash-1242x2208.png',
+  './images/splash-750x1334.png',
+  './images/splash-828x1792.png'
 ];
 
 // Install event - cache resources
@@ -137,7 +147,7 @@ self.addEventListener('fetch', (event) => {
         console.error('[SW] Fetch failed:', error);
         // For images, return a placeholder or cached version
         if (event.request.destination === 'image') {
-          return caches.match('./images/icon-192x192.png');
+          return caches.match('./android/android-launchericon-192-192.png');
         }
         throw error;
       })
@@ -163,8 +173,8 @@ self.addEventListener('push', (event) => {
   
   const options = {
     body: event.data ? event.data.text() : 'New update available!',
-    icon: './images/icon-192x192.png',
-    badge: './images/icon-72x72.png',
+    icon: './android/android-launchericon-192-192.png',
+    badge: './android/android-launchericon-72-72.png',
     vibrate: [200, 100, 200],
     data: {
       dateOfArrival: Date.now(),
@@ -174,12 +184,12 @@ self.addEventListener('push', (event) => {
       {
         action: 'explore',
         title: 'Open App',
-        icon: './images/icon-192x192.png'
+        icon: './android/android-launchericon-192-192.png'
       },
       {
         action: 'close',
         title: 'Close',
-        icon: './images/icon-192x192.png'
+        icon: './android/android-launchericon-192-192.png'
       }
     ]
   };
